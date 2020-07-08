@@ -61,10 +61,6 @@ if (isset($_SESSION["id"])) {
                 <p>member?
                     <a href="login.php">Log in</a>
                 </p>
-                <!-- Register -->
-                <p>
-                    <a href="forgotUser.php">Forgot Password</a>
-                </p>
                 <!-- Social login -->
                 <!-- <p>or sign in with:</p>
                     <a type="button" class="btn-floating btn-fb btn-sm">

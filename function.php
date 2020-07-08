@@ -40,12 +40,10 @@ class User extends Main
         $password = $_POST['signup'][0]['password'];
 
         $password = password_hash("$password", PASSWORD_DEFAULT);
-        echo $password;
 
         $sql = "INSERT INTO user (email, username, password) VALUES ('$email', '$username', '$password')";
 
         $this->conn->query($sql);
-        echo "run";
         $_SESSION["id"] = $username;
     }
 
@@ -55,9 +53,35 @@ class User extends Main
         session_unset();
 
         // destroy the session
-        session_destroy();
+        // session_destroy();
 
         echo "<meta http-equiv='refresh' content='0'>";
     }
 }
 $user = new User();
+
+class Todo extends Main
+{
+    public function addTodo()
+    {
+        $addTodo = $_POST['todo'];
+        $sessionId = $_SESSION["id"];
+        $sql = "INSERT INTO todos (todo, userId) VALUES ('$addTodo', '$sessionId')";
+        $this->conn->query($sql);
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+
+    public function getTodos()
+    {
+        $sessionId = $_SESSION["id"];
+        $sql = "SELECT * FROM todos WHERE userId='$sessionId'";
+        $result = $this->conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+    }
+}
+$todo = new Todo();

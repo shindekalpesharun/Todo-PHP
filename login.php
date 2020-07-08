@@ -55,6 +55,12 @@ if (isset($_SESSION["id"])) {
                 <p>Not a member?
                     <a href="signup.php">Register</a>
                 </p>
+
+                <!-- Forgot Password -->
+                <p>
+                    <a href="forgotUser.php">Forgot Password</a>
+                </p>
+
                 <!-- Social login -->
                 <!-- <p>or sign in with:</p>
                     <a type="button" class="btn-floating btn-fb btn-sm">
